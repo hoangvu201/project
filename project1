@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: green;
+        }
+
+        b {
+            text-transform: uppercase;
+        }
+
+        p {
+            color: red;
+        }
+
+        .getdata {
+            text-align: center;
+        }
+
+        button {
+            padding: 5px;
+            border-radius: 7px;
+            border: 1px solid black;
+            background-color: green;
+            color: aliceblue;
+            cursor: pointer;
+            ;
+        }
+
+        input {
+            border-radius: 7px;
+            padding: 5px;
+            border: 1px solid black;
+        }
+
+        .arlet {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="container">
+            <h1>Generate Number</h1>
+            <b>Rikkei Academy fukuoka</b>
+        </div>
+        <div class="arlet">
+
+        </div>
+        <div class="getdata">
+            <input type="text">
+            <button onclick="data()">Generate Number</button>
+        </div>
+        <div class="data">
+
+        </div>
+    </div>
+    <script>
+        // function lấy thông tin người dùng nhập
+        function data() {
+            // lấy giữ liệu ng dùng nhập
+            let inputData = document.getElementsByTagName("input");
+            // lấy giá trị người dùng nhập vào
+            let data = inputData[0].value;
+            console.log(data);
+            // xét giá trị người dùng nhập
+
+            let flag="";
+            if (data == ""&data!=Number()) {
+            // nếu là tập rỗng hoặc    
+                data = document.getElementsByClassName("arlet");
+                let arlet = data[0].innerHTML = ("<p>Hãy nhập 1 chữ số vào input</p>");
+                console.log(arlet);
+            }
+            else if (data <= 0) {
+                data = document.getElementsByClassName("arlet");
+                let arlet = data[0].innerHTML = ("<p>Hãy nhập 1 chữ số lớn hơn 0</p>");
+            }
+            else if (data>0){
+                let flag=data;
+                data = document.getElementsByClassName("arlet");
+                let arlet = data[0].innerHTML = ("");
+                console.log(flag);
+            }
+        }
+        function generate(flag) {
+            if (flag%2==0) {
+                flag= document.getElementsByClassName("data");
+                a= flag[0].innerText
+                console.log(flag);
+            }
+        } 
+        generate()
+    </script>
+</body>
+
+</html>
