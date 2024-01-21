@@ -44,6 +44,16 @@
         .arlet {
             text-align: center;
         }
+        .a{
+           margin: 5px;
+           background-color: red;
+           max-width: max-content;
+           padding: 12px 22px 12px 22px;
+
+        }
+        #data2{
+            left: 20px;
+        }
     </style>
 </head>
 
@@ -60,7 +70,7 @@
             <input type="text">
             <button onclick="data()">Generate Number</button>
         </div>
-        <div class="data">
+        <div id="data2">
 
         </div>
     </div>
@@ -73,34 +83,27 @@
             let data = inputData[0].value;
             console.log(data);
             // xét giá trị người dùng nhập
-
             let flag="";
-            if (data == ""&data!=Number()) {
-            // nếu là tập rỗng hoặc    
+            if (data ==""||isNaN(data)) {
+            // nếu là tập rỗng hoặc không phải số thì chạy xuống else 
                 data = document.getElementsByClassName("arlet");
                 let arlet = data[0].innerHTML = ("<p>Hãy nhập 1 chữ số vào input</p>");
-                console.log(arlet);
             }
             else if (data <= 0) {
+                // nếu nhỏ hơn hoặc bằng không 
                 data = document.getElementsByClassName("arlet");
                 let arlet = data[0].innerHTML = ("<p>Hãy nhập 1 chữ số lớn hơn 0</p>");
             }
             else if (data>0){
-                let flag=data;
-                data = document.getElementsByClassName("arlet");
-                let arlet = data[0].innerHTML = ("");
-                console.log(flag);
+                for (let i = 1; i <= data; i++) {
+                    let daySo ;
+                    daySo=document.getElementById("data2");
+                    daySo.innerHTML+=`<div class="a">${i}</div>`;
+                }
             }
         }
-        function generate(flag) {
-            if (flag%2==0) {
-                flag= document.getElementsByClassName("data");
-                a= flag[0].innerText
-                console.log(flag);
-            }
-        } 
-        generate()
     </script>
 </body>
 
+</html>
 </html>
