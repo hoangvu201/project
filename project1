@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +18,7 @@
             text-transform: uppercase;
         }
 
-        p {
+        .arlet {
             color: red;
         }
 
@@ -44,15 +45,48 @@
         .arlet {
             text-align: center;
         }
-        .a{
-           margin: 5px;
-           background-color: red;
-           max-width: max-content;
-           padding: 12px 22px 12px 22px;
+
+        .a {
+            width: 40px;
+            height: 40px;
+            display: inline-block;
 
         }
-        #data2{
-            left: 20px;
+
+        .xanh {
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            background-color: rgb(113, 236, 118);
+            margin: 2px;
+        }
+
+        .vang {
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            background-color: rgb(242, 237, 92);
+            margin: 2px;
+        }
+
+        .do {
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            background-color: rgb(243, 0, 0);
+            margin: 2px;
+        }
+
+        #database {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
         }
     </style>
 </head>
@@ -70,40 +104,75 @@
             <input type="text">
             <button onclick="data()">Generate Number</button>
         </div>
-        <div id="data2">
+        <div id="database">
 
         </div>
     </div>
+    </div>
     <script>
+        let flag = 1;
         // function lấy thông tin người dùng nhập
         function data() {
             // lấy giữ liệu ng dùng nhập
             let inputData = document.getElementsByTagName("input");
             // lấy giá trị người dùng nhập vào
             let data = inputData[0].value;
-            console.log(data);
+
             // xét giá trị người dùng nhập
-            let flag="";
-            if (data ==""||isNaN(data)) {
-            // nếu là tập rỗng hoặc không phải số thì chạy xuống else 
+            if (data == "" || isNaN(data)) {
+                // nếu là tập rỗng hoặc không phải số thì chạy xuống else 
                 data = document.getElementsByClassName("arlet");
                 let arlet = data[0].innerHTML = ("<p>Hãy nhập 1 chữ số vào input</p>");
+            }
+            else if (data != Math.floor(data)) {
+                data = document.getElementsByClassName("arlet");
+                let arlet = data[0].innerHTML = ("<p>Hãy nhập 1 chữ số nguyên dương</p>");
             }
             else if (data <= 0) {
                 // nếu nhỏ hơn hoặc bằng không 
                 data = document.getElementsByClassName("arlet");
                 let arlet = data[0].innerHTML = ("<p>Hãy nhập 1 chữ số lớn hơn 0</p>");
             }
-            else if (data>0){
+            else if (data > 0) {
+                let daySo = document.getElementById("database");
                 for (let i = 1; i <= data; i++) {
-                    let daySo ;
-                    daySo=document.getElementById("data2");
-                    daySo.innerHTML+=`<div class="a">${i}</div>`;
+                    checkData(i);
+                    //gọi hàm với tham số i
+                    if (flag == 1) {
+                        daySo.innerHTML += `<div class="do"><p>${i}</p></div>`
+                    }
+                    else if (i%2==0) {
+                        daySo.innerHTML += `<div class="xanh"><p>${i}</p></div>`    
+                    }
+                    else{
+                        daySo.innerHTML += `<div class="vang"><p>${i}</p></div>`
+                    }
                 }
             }
+            
+        }
+        function checkData(i) {
+            if (i <= 1) {
+                flag = -1;
+                return;
+            }
+            if (i == 2) {
+                flag = 1;
+                return;
+            }
+            for (let n = 2; n < i; n++) {
+                if (i % n == 0) {
+                    flag = -1;
+                    return;
+                // khi thỏa mãn đk thì return nên chỉ hiện giá trị đến giá trị đó
+                }
+            }
+            // nếu i không thỏa mãn 3 đk trên thì đặt lại giá trị flag 
+            flag=1;
         }
     </script>
 </body>
 
 </html>
+
 </html>
